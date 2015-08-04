@@ -24,7 +24,6 @@ case class Client(id: Option[Int], user_id: Int) extends WithID[Client] {
 
 object JsonFormats {
   implicit val userjson = Json.format[User]
-  implicit val trainerjson = Json.format[Trainer]
   implicit val clientjson = Json.format[Client]
 }
 
@@ -32,24 +31,13 @@ object JsonFormats {
 object Queries {
 
   implicit class IDQueryExtensions[E, T <: Table[_] with HasID](val q: Query[T,E,Seq]) {
-    def byID(id: Int) = q.filter(_.id === id)
+    def byID(id: Rep[Int]) = q.filter(_.id === id)
   }
 
   implicit class LinkQueryExtension[E, T <: LinkTable](val q: Query[T,E,Seq]) {
-    // def byLeft(id: Column[Int]) = 
+    def byRight[E <: WithID[E], T <: Table[E] with HasID](id: Rep[Int], toQuery: TableQuery[T]) = for {
+      row <- q
+      x <- toQuery if row.rightID === id && row.leftID === x.id
+    } yield x
   }
-}
-
-
-object DAO {
-  import Queries._
-
-  def byID[T <: Table[_] with HasID](query: TableQuery[T], id: Int) = query.byID(id).result map (_.headOption)
-
-  def insert[E <: WithID[E], T <: Table[E] with HasID](query: TableQuery[T], item: E) = {
-    (query returning query.map(_.id) into ((created, id) => created.withID(id))) += item
-  }
-
-  def update[E, T <: Table[E] with HasID](query: TableQuery[T], id: Int, item: E) = query.byID(id).update(item)
-  def delete[T <: Table[_] with HasID](query: TableQuery[T], id: Int) = query.byID(id).delete
 }

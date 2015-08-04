@@ -20,11 +20,13 @@ object Tables {
   }
 
 
+
   class Users(tag: Tag) extends Table[User](tag, "users") with HasID {
     def name = column[String]("name")
     def * = (id.?, name) <> (User.tupled, User.unapply _)
   }
   val users = TableQuery[Users]
+
 
 
   class Trainers(tag: Tag) extends Table[Trainer](tag, "trainers") with HasID {
@@ -36,6 +38,7 @@ object Tables {
   val trainers = TableQuery[Trainers]
 
 
+
   class Clients(tag: Tag) extends Table[Client](tag, "trainers") with HasID {
     def userID = column[Int]("user_id")
     def * = (id.?, userID) <> (Client.tupled, Client.unapply _)
@@ -43,8 +46,10 @@ object Tables {
   val clients = TableQuery[Clients]
 
 
+
   class ClientsTrainer(tag: Tag) extends LinkTable(tag, "clientstrainers", "client_id", "trainer_id")
   val clientstrainers = TableQuery[ClientsTrainer]
+
 
 
   class ClubsTrainers(tag: Tag) extends LinkTable(tag, "clubstrainers", "club_id", "trainer_id")

@@ -1,7 +1,18 @@
-@(message: String)
+@(message: String) 
 
-@main("Welcome to Play") {
+<!DOCTYPE html>
+<html>
+<head>
+  <title>fitmap</title>
+  <meta charset="utf-8" />
 
-    @play20.welcome(message)
-
-}
+  <link rel="stylesheet" href="@routes.Assets.versioned("bower_components/angular-material/angular-material.css")" type="text/css" media="all" />
+</head>
+<body>
+  <script src="@routes.Assets.versioned("bower_components/angular/angular.min.js")" type="text/javascript" charset="utf-8"></script>
+  <script src="@routes.Assets.versioned("bower_components/angular-animate/angular-animate.min.js")" type="text/javascript" charset="utf-8"></script>
+  <script src="@routes.Assets.versioned("bower_components/angular-aria/angular-aria.min.js")" type="text/javascript" charset="utf-8"></script>
+  <script src="@routes.Assets.versioned("bower_components/angular-material/angular-material.min.js")" type="text/javascript" charset="utf-8"></script>
+  <script src="@routes.Assets.versioned("assets/js/app.js")" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
