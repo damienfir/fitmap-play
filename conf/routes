@@ -1,0 +1,32 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+
+# GET     /clubs/:id                  controllers.Clubs.get(id)
+# POST    /clubs/:id                  controllers.Clubs.post(id)
+# GET     /clubs/:id/trainers         controllers.Clubs.getTrainers(id)
+GET     /trainers/:id               controllers.Trainers.get(id: Int)
+# GET     /trainers/:id/clients       controllers.Trainers.getClients(id)
+# POST    /trainers/:id/clients       controllers.Trainers.addClient(id)
+# GET     /clients/:id                controllers.Clients.get(id)
+# POST    /clients/:id                controllers.Clients.post(id)
+# DELETE  /clients/:id                controllers.Clients.delete(id)
+# GET     /clients/:id/phases         controllers.Clients.getPhases(id)
+# GET     /phases/:id                 controllers.Phases.get(id)
+# GET     /phases/:id/exercises       controllers.Phases.getExercises(id)
+# GET     /exercises/:id              controllers.Exercises.get(id)
+
+# GET     /trainers/:id/libraries     controllers.Trainers.getLibraries(id)
+# GET     /libraries/:id/phases       controllers.Library.getPhases(id)
+# GET     /libraries/:id/setups       controllers.Library.getSetups(id)
+# GET     /libraries/:id/exercises    controllers.Library.getExercises(id)
+# GET     /libraries/:id/categories   controllers.Library.getCategories(id)
+# GET     /libraries/:id/equipments   controllers.Library.getEquipments(id)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

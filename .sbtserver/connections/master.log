@@ -1,0 +1,7 @@
+New log file opened at Mon Aug 03 14:46:07 CEST 2015 by 11519@pocus
+Taking next connection to: 54068
+New client attempting to connect on port: 60955-54068
+  Address = /128.178.116.80:54068
+This client on port 60955 has uuid 3c7c430c-f3ec-4554-a549-d9d072915174 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-3c7c430c-f3ec-4554-a549-d9d072915174
+Taking next connection to: 54068
